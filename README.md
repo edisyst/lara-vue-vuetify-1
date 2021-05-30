@@ -1,62 +1,215 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# IMPOSTARE LARAVEL + VUE + VUETIFY
 
-## About Laravel
+#### https://www.youtube.com/watch?v=VaI9tV8GQFk
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+```
+laravel new lara-vue-vuetify-1
+cd lara-vue-vuetify-1
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+https://github.com/laravel/ui
+```
+composer require laravel/ui --dev
+php artisan ui vue --auth
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```
+npm install && npm run dev
+npm install vue-loader@^15.9.5 --save-dev --legacy-peer-deps
+```
+(forse l'ultimo comando lo fa da solo)
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### Vuetify -> Webpack install
+https://vuetifyjs.com/en/getting-started/installation/#webpack-install
+```
+npm install vuetify
+npm install sass sass-loader deepmerge -D
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+https://vuetifyjs.com/en/features/treeshaking/#vuetify-loader
+```
+npm install vuetify-loader
+```
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+CREA resources/js/plugins/vuetify.js E SCRIVICI
+```
+// You still need to register Vuetify itself
+// src/plugins/vuetify.js
 
-## Code of Conduct
+import Vue from 'vue'
+import Vuetify from 'vuetify/lib'
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Vue.use(Vuetify)
 
-## Security Vulnerabilities
+const opts = {}
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+export default new Vuetify(opts)
+```
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+pacchetto facoltativo ma aiuta
+```
+npm install --save-dev case-sensitive-paths-webpack-plugin
+```
+
+
+APRI **webpack.mix.js** E INCOLLA DOPO LA PRIMA RIGA:
+```
+//recupero i due pacchetti installati
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+
+//li metto in un oggetto con un array di plugins
+var webpackConfig = {
+    plugins: [
+        new VuetifyLoaderPlugin(),
+        new CaseSensitivePathsPlugin()
+        // other plugins ...
+    ]
+    // other webpack config ...
+}
+
+//infine li metto nell'oggetto mix
+mix.webpackConfig( webpackConfig );
+```
+
+NEL FILE **resources/js/app.js** DOPO LA RIGA
+```
+window.Vue = require('vue').default;
+```
+AGGIUNGERE
+```
+import Vuetify from "../js/plugins/vuetify";
+E ALLA FINE AGGIUNGERE
+const app = new Vue({
+    vuetify: Vuetify,
+    el: '#app',
+});
+```
+
+```
+npm run watch
+```
+PER TESTARLO VADO IN http://127.0.0.1:8000/login
+
+
+PER TESTARE SE FUNGE VUE AGGIUNGO DENTRO ```div#app``` NEL FILE **resources/views/layouts/app.blade.php**
+```
+<example-component></example-component>
+```
+
+PER TESTARE SE FUNGE VUETIFY SCRIVO DENTRO **resources/js/components/ExampleComponent.vue**
+```
+    <v-app>
+        <v-btn small color="primary">Button di vuetify</v-btn>
+    </v-app>
+```
+
+
+
+# SPA APPLICATION:
+#### AGGIUNGERE ANCHE QUESTE COSE
+#### https://www.youtube.com/watch?v=cXGxO6KCR4g
+
+
+- Facoltativamente ho aggiunto il campo (required) ```Lastname``` in registrazione: in **user_migration**, in **register.blade**, in **User.model**, in **RegisterController**
+
+```
+php artisan migrate
+```
+
+- COPIO **resources/views/layouts/app.blade.php** IN **resources/views/spa.blade.php**
+
+- IN **HomeController** DA ORA REINDIRIZZO SU view('spa') APPENA CREATA
+
+- IN **resources/views/spa.blade.php** POSSO COPIARE UNO DI QUESTI LAYOUT DI VUETIFY COME COMPONENT
+
+    - https://vuetifyjs.com/en/getting-started/wireframes/#examples
+
+- AGGIUNGO IL COMPONENT IN **app.js**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Synchronization
+
+Synchronization is one of the biggest features of StackEdit. It enables you to synchronize any file in your workspace with other files stored in your **Google Drive**, your **Dropbox** and your **GitHub** accounts. This allows you to keep writing on other devices, collaborate with people you share the file with, integrate easily into your workflow... The synchronization mechanism takes place every minute in the background, downloading, merging, and uploading file modifications.
+
+There are two types of synchronization and they can complement each other:
+
+- The workspace synchronization will sync all your files, folders and settings automatically. This will allow you to fetch your workspace on any other device.
+  > To start syncing your workspace, just sign in with Google in the menu.
+
+- The file synchronization will keep one file of the workspace synced with one or multiple files in **Google Drive**, **Dropbox** or **GitHub**.
+  > Before starting to sync files, you must link an account in the **Synchronize** sub-menu.
+
+
+## SmartyPants
+
+SmartyPants converts ASCII punctuation characters into "smart" typographic punctuation HTML entities. For example:
+
+|                |ASCII                          |HTML                         |
+|----------------|-------------------------------|-----------------------------|
+|Single backticks|`'Isn't this fun?'`            |'Isn't this fun?'            |
+|Quotes          |`"Isn't this fun?"`            |"Isn't this fun?"            |
+|Dashes          |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
+
+
+## KaTeX
+
+You can render LaTeX mathematical expressions using [KaTeX](https://khan.github.io/KaTeX/):
+
+The *Gamma function* satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the Euler integral
+
+$$
+\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
+$$
+
+> You can find more information about **LaTeX** mathematical expressions [here](http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference).
+
+
+## UML diagrams
+
+You can render UML diagrams using [Mermaid](https://mermaidjs.github.io/). For example, this will produce a sequence diagram:
+
+```mermaid
+sequenceDiagram
+Alice ->> Bob: Hello Bob, how are you?
+Bob-->>John: How about you John?
+Bob--x Alice: I am good thanks!
+Bob-x John: I am good thanks!
+Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text does<br/>not fit on a row.
+
+Bob-->Alice: Checking with John...
+Alice->John: Yes... John, how are you?
+```
+
+And this will produce a flow chart:
+
+```mermaid
+graph LR
+A[Square Rect] -- Link text --> B((Circle))
+A --> C(Round Rect)
+B --> D{Rhombus}
+C --> D
+```
+

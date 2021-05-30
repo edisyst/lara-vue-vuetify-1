@@ -23,6 +23,7 @@ import Vuetify from "../js/plugins/vuetify";
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('app-container', require('./components/AppContainer.vue').default);
+Vue.component('collapse-on-scroll', require('./components/CollapseOnScroll.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
