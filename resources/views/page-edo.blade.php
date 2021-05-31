@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-edo')
 
 
 @section('stylesheets')
@@ -7,11 +7,13 @@
 
 @section('content_head')
 INTESTAZIONE DELLA PAGINA
+<collapse-on-scroll></collapse-on-scroll>
 @endsection
 
 
 @section('content_body')
 CORPO DELLA PAGINA
+<example-component></example-component>
 @endsection
 
 

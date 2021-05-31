@@ -25,7 +25,6 @@
 <body>
     <div id="app">
 
-        <collapse-on-scroll></collapse-on-scroll>
         <example-component></example-component>
 
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
