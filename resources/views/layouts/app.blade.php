@@ -24,8 +24,7 @@
 </head>
 <body>
     <div id="app">
-
-        <example-component></example-component>
+    <!-- QUI DENTRO POTREI ANCHE METTERCI DEI COMPONENTI VUE -->
 
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -82,17 +81,9 @@
         </nav>
 
         <main class="py-4">
+            <!-- CONTENT DI DEFAULT DI LARAVEL PER app.blade -->
             @yield('content')
-
-            <!-- CONTENT HEADING-->
-            @yield('content_head')
-
-            <!-- CONTENT BODY -->
-            @yield('content_body')
         </main>
     </div>
-
-    <!-- CUSTOM SCRIPT -->
-    @yield('scripts')
 </body>
 </html>

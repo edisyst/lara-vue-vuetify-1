@@ -1868,6 +1868,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -38242,7 +38247,26 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("v-main", [_vm._v("\n        qui ho il main\n    ")])
+      _c("v-main", [
+        _vm._v("\n        qui ho il main\n\n        "),
+        _c("p", [
+          _vm._v(
+            "HomeController invece che linkare alla view home.blade linka a spa.blade"
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "spa.blade non estende nessun layout e il body è interamente occupato dal\n            div#app"
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "Passando per HomeController, ho la protezione auth in spa.blade"
+          )
+        ])
+      ])
     ],
     1
   )
@@ -38355,12 +38379,12 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-md-8" }, [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-header" }, [
-              _vm._v("Exampless Component")
+              _vm._v("Example Component")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _vm._v(
-                "\r\n                        I'm an example component.\r\n                    "
+                "\n                        I'm an example component.\n                    "
               )
             ])
           ])

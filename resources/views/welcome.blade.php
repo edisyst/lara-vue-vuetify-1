@@ -46,16 +46,25 @@
                 </div>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                    <div class="p-6">
+                        <p>Almeno per ora le pagine register, login sono senza elementi vue, ma potrei già aggiungerli</p>
+                        <p>Esse estendono app.blade, il cui body è interamente occupato dal div#app, quindi posso farlo</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">
                             <div class="flex items-center">
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="/nolayout" class="underline text-gray-900 dark:text-white">Pagina senza layout</a></div>
                             </div>
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
+                                    <p>Questa pagina <u>non estende nessun layout</u></p>
+                                    <p>Il body è formato da Header e Footer statici, con in mezzo il "content" dinamico div#app</p>
+                                    <p>La app.vue è solo nella parte centrale e solo qui vedrò i componenti</p>
                                 </div>
                             </div>
                         </div>
@@ -63,12 +72,15 @@
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
                             <div class="flex items-center">
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="/home" class="underline text-gray-900 dark:text-white">SPA con auth</a></div>
                             </div>
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                                    <p>HomeController invece che linkare alla view home.blade linka a spa.blade</p>
+                                    <p>spa.blade non estende nessun layout e il body è interamente occupato dal
+                                        div#app</p>
+                                    <p>Passando per HomeController, ho la protezione auth in spa.blade</p>
                                 </div>
                             </div>
                         </div>
@@ -76,12 +88,15 @@
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700">
                             <div class="flex items-center">
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="/edo" class="underline text-gray-900 dark:text-white">Layout Edo suddiviso in sezioni</a></div>
                             </div>
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
+                                    <p>Pagina che estende il layout <b>layouts.app-edo</b> all'interno del quale ho la app.vue</p>
+                                    <p>Nel layout il div#app occupa tutto il body, ed è suddiviso in sezioni che estendo nella pagina</p>
+                                    <p>Richiamando nella pagina le sezioni, ci metto dentro i components</p>
+                                    <p>In questo caso ne ho uno nell'intestazione e uno nel main</p>
                                 </div>
                             </div>
                         </div>
