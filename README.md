@@ -34,7 +34,10 @@ https://vuetifyjs.com/en/features/treeshaking/#vuetify-loader
 npm install vuetify-loader
 ```
 
-
+Installo a parte le mdi-icons altrimenti non me le prende
+```
+npm install @mdi/font -D
+```
 
 
 
@@ -44,18 +47,22 @@ CREA resources/js/plugins/vuetify.js E SCRIVICI
 // You still need to register Vuetify itself
 // src/plugins/vuetify.js
 
+import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
+
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
 
 Vue.use(Vuetify)
 
-const opts = {}
-
-export default new Vuetify(opts)
+export default new Vuetify({
+    icons: {
+        iconfont: 'mdi', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4' || 'faSvg'
+    },
+})
 ```
 
 
-pacchetto facoltativo ma aiuta
+Pacchetto facoltativo ma aiuta
 ```
 npm install --save-dev case-sensitive-paths-webpack-plugin
 ```
@@ -68,7 +75,7 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 //li metto in un oggetto con un array di plugins
-var webpackConfig = {
+const webpackConfig = {
     plugins: [
         new VuetifyLoaderPlugin(),
         new CaseSensitivePathsPlugin()
@@ -140,6 +147,39 @@ php artisan migrate
 
 
 
+# ALTRO
+
+### Aggiungo vue-router
+
+```npm install vue-router```
+
+Creo il file __resources/js/router/index.js__ e ci scrivo
+```
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+
+import Dashboard from '../components/spa/dashboard/Container'
+import Contacts from '../components/spa/contacts/Container'
+
+const routes = [
+    {
+        path: '/',
+        name: 'Dashboard',
+        component: Dashboard
+    },
+    {
+        path: '/contacts',
+        name: 'Contacts',
+        component: Contacts
+    },
+]
+
+export default new VueRouter({ routes});
+```
+
+Dentro __resources/js/app.js__ lo devo importare ```import router from './router';```
 
 
 
@@ -148,13 +188,6 @@ php artisan migrate
 
 
 
-
-
-# Synchronization
-
-Synchronization is one of the biggest features of StackEdit. It enables you to synchronize any file in your workspace with other files stored in your **Google Drive**, your **Dropbox** and your **GitHub** accounts. This allows you to keep writing on other devices, collaborate with people you share the file with, integrate easily into your workflow... The synchronization mechanism takes place every minute in the background, downloading, merging, and uploading file modifications.
-
-There are two types of synchronization and they can complement each other:
 
 - The workspace synchronization will sync all your files, folders and settings automatically. This will allow you to fetch your workspace on any other device.
   > To start syncing your workspace, just sign in with Google in the menu.

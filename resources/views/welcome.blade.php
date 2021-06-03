@@ -94,7 +94,7 @@
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                                     <p>Pagina che estende il layout <b>layouts.app-edo</b> all'interno del quale ho la app.vue</p>
-                                    <p>Nel layout il div#app occupa tutto il body, ed è suddiviso in sezioni che estendo nella pagina</p>
+                                    <p>Nel layout il div#app occupa tutto il body, ed è suddiviso in sezioni (<u>aggiungi footer</u>) che estendo nella pagina</p>
                                     <p>Richiamando nella pagina le sezioni, ci metto dentro i components</p>
                                     <p>In questo caso ne ho uno nell'intestazione e uno nel main</p>
                                 </div>

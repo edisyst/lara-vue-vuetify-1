@@ -21,11 +21,7 @@
 </head>
 <body>
     <div id="app">
-{{--        <example-component></example-component>--}}
-        <app-container>
-{{--        <h1>Sono dentro #app e qui dentro inserisco i componenti</h1>--}}
-
-        </app-container>
+        <app-container></app-container>
     </div>
 </body>
 </html>

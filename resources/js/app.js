@@ -8,7 +8,13 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+import router from './router';
+
+// import Vuex from 'vuex';
+
 import Vuetify from "../js/plugins/vuetify";
+
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,7 +28,7 @@ import Vuetify from "../js/plugins/vuetify";
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('app-container', require('./components/AppContainer.vue').default);
+Vue.component('app-container', require('./components/spa/AppContainer.vue').default);
 Vue.component('collapse-on-scroll', require('./components/CollapseOnScroll.vue').default);
 
 /**
@@ -33,5 +39,6 @@ Vue.component('collapse-on-scroll', require('./components/CollapseOnScroll.vue')
 
 const app = new Vue({
     vuetify: Vuetify,
+    router,
     el: '#app',
 });

@@ -10,6 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@mdi/font": "^5.9.55",
         "axios": "^0.21",
         "bootstrap": "^4.6.0",
         "deepmerge": "^4.2.2",
@@ -27,6 +28,7 @@
     },
     "dependencies": {
         "case-sensitive-paths-webpack-plugin": "^2.4.0",
+        "vue-router": "^3.5.1",
         "vuetify": "^2.5.1",
         "vuetify-loader": "^1.7.2"
     }
