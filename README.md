@@ -182,6 +182,10 @@ export default new VueRouter({ routes});
 Dentro __resources/js/app.js__ lo devo importare ```import router from './router';```
 
 
+### Aggiungo vuex alla SPA
+```
+npm install vuex --save
+```
 
 
 

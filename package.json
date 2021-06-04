@@ -30,6 +30,7 @@
         "case-sensitive-paths-webpack-plugin": "^2.4.0",
         "vue-router": "^3.5.1",
         "vuetify": "^2.5.1",
-        "vuetify-loader": "^1.7.2"
+        "vuetify-loader": "^1.7.2",
+        "vuex": "^3.6.2"
     }
 }

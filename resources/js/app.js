@@ -10,11 +10,10 @@ window.Vue = require('vue').default;
 
 import router from './router';
 
-// import Vuex from 'vuex';
-
 import Vuetify from "../js/plugins/vuetify";
 
-
+// import Vuex from 'vuex'; //lo importo dentro store/index.js
+import store from './store'
 
 /**
  * The following block of code may be used to automatically register your
@@ -40,5 +39,6 @@ Vue.component('collapse-on-scroll', require('./components/CollapseOnScroll.vue')
 const app = new Vue({
     vuetify: Vuetify,
     router,
+    store,
     el: '#app',
 });
