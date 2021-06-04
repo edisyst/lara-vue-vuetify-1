@@ -17,6 +17,10 @@
     <p>Nel layout il div#app occupa tutto il body, ed è suddiviso in sezioni che estendo nella pagina</p>
     <p>Richiamando nella pagina le sezioni, ci metto dentro i components</p>
     <p>In questo caso ne ho uno nell'intestazione e uno nel main</p>
+@endsection
+
+
+@section('content_footer')
     <example-component></example-component>
 @endsection
 

@@ -34,6 +34,9 @@
         @yield('content_body')
 
 
+        <!-- CONTENT FOOTER -->
+        @yield('content_footer')
+
     </div>
 
     <!-- CUSTOM SCRIPT -->

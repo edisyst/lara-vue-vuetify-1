@@ -11,7 +11,12 @@ INTESTAZIONE DELLA PAGINA
 
 
 @section('content_body')
-CORPO DELLA PAGINA - AGGIUNGERE ANCHE IL FOOTER
+CORPO DELLA PAGINA
+@endsection
+
+
+@section('content_footer')
+FOOTER DELLA PAGINA
 @endsection
 
 
