@@ -1,39 +1,52 @@
 <template>
-    <v-card class="overflow-hidden">
+    <div>
         <v-app-bar
-            :collapse="!collapseOnScroll"
-            :collapse-on-scroll="collapseOnScroll"
-            absolute
-            color="deep-purple accent-4"
+            color="deep-purple"
             dark
-            scroll-target="#scrolling-techniques-6"
         >
-            <v-app-bar-nav-icon></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
-            <v-toolbar-title>Collapsing Bar</v-toolbar-title>
+            <v-toolbar-title>Titolo page-edo</v-toolbar-title>
 
-            <v-spacer></v-spacer>
-
-            <v-checkbox
-                v-model="collapseOnScroll"
-                color="white"
-                hide-details
-            ></v-checkbox>
         </v-app-bar>
-        <v-sheet
-            id="scrolling-techniques-6"
-            class="overflow-y-auto"
-            max-height="600"
+
+        <v-navigation-drawer
+            v-model="drawer"
+            absolute
+            temporary
         >
-            <v-container style="height: 1000px;"></v-container>
-        </v-sheet>
-    </v-card>
+            <v-list
+                nav
+                dense
+            >
+                <v-list-item-group
+                    v-model="group"
+                    active-class="deep-purple--text text--accent-4"
+                >
+                    <v-list-item href="/">
+                        <v-list-item-icon>
+                            <v-icon>mdi-home</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-title>Torna alla Home</v-list-item-title>
+                    </v-list-item>
+
+                    <v-list-item>
+                        <v-list-item-icon>
+                            <v-icon>mdi-account</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-title>Account</v-list-item-title>
+                    </v-list-item>
+                </v-list-item-group>
+            </v-list>
+        </v-navigation-drawer>
+    </div>
 </template>
 
 <script>
 export default {
     data: () => ({
-        collapseOnScroll: true,
+        drawer: false,
+        group: null,
     }),
 }
 </script>
