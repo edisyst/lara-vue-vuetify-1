@@ -13,7 +13,7 @@ import router from './router';
 import Vuetify from "../js/plugins/vuetify";
 
 // import Vuex from 'vuex'; //lo importo dentro store/index.js
-import store from './store'
+import store from './store';
 
 /**
  * The following block of code may be used to automatically register your
@@ -28,7 +28,9 @@ import store from './store'
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('app-container', require('./components/spa/AppContainer.vue').default);
-Vue.component('collapse-on-scroll', require('./components/CollapseOnScroll.vue').default);
+Vue.component('nav-bar-component', require('./components/edo/NavBarComponent.vue').default);
+Vue.component('footer-component', require('./components/edo/FooterComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

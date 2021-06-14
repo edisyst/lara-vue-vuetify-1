@@ -3,7 +3,9 @@
         <v-app-bar
             color="deep-purple"
             dark
+            fixed
         >
+
             <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
             <v-toolbar-title>Titolo page-edo</v-toolbar-title>
